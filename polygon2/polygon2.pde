@@ -31,7 +31,23 @@ void draw() {
   fill(0);
   rect(0,0,width, height);
 
+  etiquette = new etiquette[items.length];
 
+    // je créé une boucle qui va chercher dans mon tableau d'objets Etiquette que je viens de créer
+    for (int i=0; i<etiquette.length; i++) {
+      // je crée un nouvel objet Etiquette et je lui attribue en argument le numéro de téléphone correspondant
+      etiquette[i]= new Etiquette(items[i]);
+    }
+    
+    for (int i=0; i<etiquette.length; i++) {
+    // je vérifie que mon objet Etiquette existe
+    if (etiquette[i]!=null) {
+      // je vais appeler la fonction draw de ma classe Etiquette pour la dessiner
+      etiquette[i].draw();
+    }
+  }
+  
+  Etiquette[] etiquette = new Etiquette [1];
   
   organe1.draw();
   organe2.draw();
@@ -56,7 +72,24 @@ timer++;
   
 
 }
+
+
+class Etiquette {
+
+  String familyLabel; // ma variable qui contient le numéro de téléphone sous forme de texte
+
  
+
+  // le setup de mon Etiquette 
+  Etiquette(String familyLabel) { // je récupère le numéro à la création de l'objet
+   
+    this.familyLabel= familyLabel; // je transfert ce numéro dans ma variable créée plus haut
+
+ if (familyLabel == "FROMAGE LS") {
+   println("yess");
+ }else{
+   println("nein");
+ }
 
 
 
