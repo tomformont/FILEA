@@ -87,21 +87,7 @@ void draw() {
 
 
 
-void mouseReleased() {
-  window.navigator.vibrate(2000);
-  if ( value == 0) {
-    value++;
 
-    /*
-organe1.changeTarget(70,80);
-     organe2.changeTarget(70,240);
-     organe3.changeTarget(70,380);
-     organe4.changeTarget(240,80);
-     organe5.changeTarget(240,240);
-     organe6.changeTarget(240,380);
-     */
-  }
-}
 
 void keyPressed() { 
   if (value == 1) {
@@ -178,6 +164,12 @@ class Etiquette {
 
 
 class Organe {
+  
+  
+  
+  
+  
+  
 
 
 
@@ -185,7 +177,7 @@ class Organe {
   int alpha; // transparenc
   boolean changeOpacity; // si true activer le changement d'opacite
   boolean noOpacity; //  si true reprend opacité de base
-
+  boolean resetOpacity;
 
   int centerX = 0;
   int centerY = 1;
@@ -284,6 +276,24 @@ int valeurApport; // minimum -100 // maximum 100
     organicConstant= random(0, 8, 2);  
     radius = random(30, 55);
     nodes=int(random(5, 10));
+    
+
+
+changeOpacityDefault(){
+
+if (resetOpacity){
+      if (alpha <=initialOpacity) {
+        alpha+=10;
+      }
+      else {
+        resetOpacity =false;
+      }
+
+}
+}
+
+
+
 
     ////////////////////////////////////////
     ////////////LAITAGE ////////////////////
@@ -691,8 +701,13 @@ println (poids+ " "+valeurApport);
     texte();
     mouseEvent();
     fadeToBlack();
+    
+ 
 
   } 
+
+
+   
 
 
 
@@ -751,6 +766,10 @@ println (poids+ " "+valeurApport);
      
      */
   }
+
+
+
+
 
 
 
@@ -873,6 +892,33 @@ println (poids+ " "+valeurApport);
         mode ="detail";
       }
     }
+    
+    
+    if (isMouseReleased && mousePressed && mouseX>=centerX-(radius/2) && mouseX <= centerX+(radius/2) && mouseY>=centerY-(radius/2) && mouseY <= centerY+(radius/2)) {
+      
+      
+
+
+      if (mode.equals("liste")) {
+        println("ok");
+        
+        
+        organe1.resetOpacity=true;
+        organe2.resetOpacity=true;
+        organe3.resetOpacity=true;
+        organe4.resetOpacity=true;
+        organe5.resetOpacity=true;
+        organe6.resetOpacity=true;
+        isMouseReleased=false;
+        
+        
+
+
+mode="detail";
+      }
+    }
+    
+    
     if (isMouseReleased && mousePressed && mouseX>=centerX-(radius/2) && mouseX <= centerX+(radius/2) && mouseY>=centerY-(radius/2) && mouseY <= centerY+(radius/2)) {
       if (mode.equals("detail")) {
 
@@ -916,7 +962,7 @@ println (poids+ " "+valeurApport);
           organe1.changeOpacity=true;
           organe2.changeOpacity=true;
           organe3.changeOpacity=true;
-          organe4.changeTarget=(70, 70);
+          organe4.changeTarget(70, 70);
           organe5.changeOpacity=true;
           organe6.changeOpacity=true;
 
@@ -936,7 +982,7 @@ println (poids+ " "+valeurApport);
           organe1.changeOpacity=true;
           organe2.changeOpacity=true;
           organe3.changeOpacity=true;
-          organe3.changeOpacity=true;
+          organe4.changeOpacity=true;
           organe5.changeOpacity=true;
           organe6.changeTarget=(70, 70);
 
@@ -963,16 +1009,8 @@ println (poids+ " "+valeurApport);
       //isMouseReleased && mousePressed && mouseX>=centerX-(radius/2) && mouseX <= centerX+(radius/2) && mouseY>=centerY-(radius/2) && mouseY <= centerY+(radius/2)
 
       if (mode.equals("liste")) {
-        println("ok");
-        /*
-        organe1.changeTarget(70, 70);
-        organe2.changeTarget(70, 70);
-        organe3.changeTarget(70, 70);
-        organe4.changeTarget(70, 70);
-        organe5.changeTarget(70, 70);
-        organe6.changeTarget(70, 70);
-        isMouseReleased=false;
-        */
+        
+       
         
 
 
