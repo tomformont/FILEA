@@ -1,0 +1,30 @@
+{
+  "name": "CARE",
+  "version": "0.0.1",
+  "description": "Care est un service permettant la visualisation et comparaison de la consommation alimentaire d’un ménage.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomformont/datadesigngit.git"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "americano": "~0.3.0",
+    "americano-cozy": "~0.2.1"
+  },
+  "engines": [
+    "node = 0.8.x"
+  ],
+  "scripts": {
+    "start": "node server.js"
+  }
+"cozy-displayName":"CARE",
+"cozy-permissions":{
+  "ReceiptDetail"{
+      "description":"Visualiser les lignes de votre ticket de caisse."
+
+
+  }
+
+
+}
+}
