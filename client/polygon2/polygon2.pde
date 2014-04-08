@@ -43,9 +43,8 @@ void setup() {
 
 void draw() {
   //fade background
-  fill(0);
+  fill(0,100);
   rect(0, 0, width, height);
-
 
 
 
@@ -175,9 +174,12 @@ class Organe {
 
   int x, y;
   int alpha; // transparenc
+
   boolean changeOpacity; // si true activer le changement d'opacite
   boolean noOpacity; //  si true reprend opacité de base
   boolean resetOpacity;
+  int initialOpacity;
+  
 
   int centerX = 0;
   int centerY = 1;
@@ -204,8 +206,8 @@ class Organe {
   float organicConstant = 0.2;
   String nomObjet;
   String []categories = {
-    "LAITAGES", "EPICERIE SUCREE", 
-    "VIANDE", "EPICERIE SALEE", "BOULANGERIE", "FRUITS & LÉGUMES"
+    "LAITAGES", "EPICERIE \nSALEE",
+    "VIANDE",  "EPICERIE \nSUCREE", "BOULANGERIE", "FRUITS & LÉGUMES"
   };
 
 
@@ -259,7 +261,7 @@ int valeurApport; // minimum -100 // maximum 100
   Organe (int x1, int y1, String nomObjet, int id) {
 
 
-    alpha= int (random (40, 125));
+   // alpha= int (random (40, 125));
     this.nomObjet=nomObjet;
     this.id=id;
 
@@ -278,19 +280,6 @@ int valeurApport; // minimum -100 // maximum 100
     nodes=int(random(5, 10));
     
 
-
-changeOpacityDefault(){
-
-if (resetOpacity){
-      if (alpha <=initialOpacity) {
-        alpha+=10;
-      }
-      else {
-        resetOpacity =false;
-      }
-
-}
-}
 
 
 
@@ -338,6 +327,9 @@ if (resetOpacity){
       // calcul du pourcentage de l'apport 
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
+  
+  alpha = int (map ( valeurApport, 0,100,0,255));
+  initialOpacity=alpha;
 println (poids+ " "+valeurApport);  
       
       
@@ -406,7 +398,8 @@ println (poids+ " "+valeurApport);
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
 
-      
+        alpha = int (map ( valeurApport, 0,100,0,255));
+  initialOpacity=alpha;
       
       /*
       // j'initialise mon tableau final pour stocker le nom et la date des produits
@@ -471,6 +464,8 @@ println (poids+ " "+valeurApport);
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
 
+  alpha = int (map ( valeurApport, 0,100,0,255));
+  initialOpacity=alpha;
       
       
       /*
@@ -532,7 +527,8 @@ println (poids+ " "+valeurApport);
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
  
-      
+        alpha = int (map ( valeurApport, 0,100,0,255));
+  initialOpacity=alpha;
       
       /*
       // j'initialise mon tableau final pour stocker le nom et la date des produits
@@ -598,7 +594,8 @@ println (poids+ " "+valeurApport);
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
 
-      
+        alpha = int (map ( valeurApport, 0,100,0,255));
+  initialOpacity=alpha;
       
       /*
       // j'initialise mon tableau final pour stocker le nom et la date des produits
@@ -662,7 +659,8 @@ println (poids+ " "+valeurApport);
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
 
-      
+        alpha = int (map ( valeurApport, 0,100,0,255));
+  initialOpacity=alpha;
       
       /*
       // j'initialise mon tableau final pour stocker le nom et la date des produits
@@ -701,7 +699,7 @@ println (poids+ " "+valeurApport);
     texte();
     mouseEvent();
     fadeToBlack();
-    
+ changeOpacityDefault();   
  
 
   } 
@@ -809,6 +807,7 @@ println (poids+ " "+valeurApport);
 
     cibleX=x;
     cibleY=y;
+    println (cibleX + " "+ cibleY);
   }
 
   void easeTarget() {
@@ -823,7 +822,10 @@ println (poids+ " "+valeurApport);
   void fadeToBlack() {
     if (changeOpacity) {
       if (alpha >=0) {
-        alpha-=10;
+   
+    alpha-=10;
+
+  
       }
       else {
         changeOpacity=false;
@@ -832,7 +834,21 @@ println (poids+ " "+valeurApport);
   }
   
   
+void changeOpacityDefault(){
 
+if (resetOpacity){
+      if (alpha <=initialOpacity) {
+  
+        
+
+ alpha+=10;
+      }
+      else {
+        resetOpacity =false;
+      }
+
+}
+}
 
   void reduce() {
     if (cibleX!=centerX || cibleY!=centerY) {
@@ -888,12 +904,16 @@ println (poids+ " "+valeurApport);
         organe4.changeTarget(240, 80);    //240, 80
         organe5.changeTarget(240, 240);    //240, 240
         organe6.changeTarget(240, 380);    //240, 380
+        
+               
+        
+        
         isMouseReleased=false;
         mode ="detail";
       }
     }
     
-    
+/*    
     if (isMouseReleased && mousePressed && mouseX>=centerX-(radius/2) && mouseX <= centerX+(radius/2) && mouseY>=centerY-(radius/2) && mouseY <= centerY+(radius/2)) {
       
       
@@ -903,12 +923,7 @@ println (poids+ " "+valeurApport);
         println("ok");
         
         
-        organe1.resetOpacity=true;
-        organe2.resetOpacity=true;
-        organe3.resetOpacity=true;
-        organe4.resetOpacity=true;
-        organe5.resetOpacity=true;
-        organe6.resetOpacity=true;
+
         isMouseReleased=false;
         
         
@@ -917,7 +932,7 @@ println (poids+ " "+valeurApport);
 mode="detail";
       }
     }
-    
+    */
     
     if (isMouseReleased && mousePressed && mouseX>=centerX-(radius/2) && mouseX <= centerX+(radius/2) && mouseY>=centerY-(radius/2) && mouseY <= centerY+(radius/2)) {
       if (mode.equals("detail")) {
@@ -932,6 +947,7 @@ mode="detail";
           organe4.changeOpacity=true;
           organe5.changeOpacity=true;
           organe6.changeOpacity=true;
+          println(organe1.valeurApport);
 
           break;
 
@@ -973,7 +989,8 @@ mode="detail";
           organe2.changeOpacity=true;
           organe3.changeOpacity=true;
           organe4.changeOpacity=true;
-          organe5.changeTarget=(70, 70);
+          
+          organe5.changeTarget(70, 70);
           organe6.changeOpacity=true;
 
           break;
@@ -984,7 +1001,7 @@ mode="detail";
           organe3.changeOpacity=true;
           organe4.changeOpacity=true;
           organe5.changeOpacity=true;
-          organe6.changeTarget=(70, 70);
+          organe6.changeTarget(70, 70);
 
           break;
          
@@ -1010,11 +1027,25 @@ mode="detail";
 
       if (mode.equals("liste")) {
         
+        organe1.changeTarget(160, 240);
+        organe2.changeTarget(160, 240);    //70, 240
+        organe3.changeTarget(160, 240);    //70, 380
+        organe4.changeTarget(160, 240);    //240, 80
+        organe5.changeTarget(160, 240);    //240, 240
+        organe6.changeTarget(160, 240);    //240, 380
+         organe1.resetOpacity=true;
+        organe2.resetOpacity=true;
+        organe3.resetOpacity=true;
+        organe4.resetOpacity=true;
+        organe5.resetOpacity=true;
+        organe6.resetOpacity=true;
+        isMouseReleased=false;
+        mode ="menu";
        
         
 
 
-mode="detail";
+
       }
     }
   }
