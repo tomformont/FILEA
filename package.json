@@ -16,15 +16,11 @@
   ],
   "scripts": {
     "start": "node server.js"
+  },
+  "cozy-displayName": "CARE",
+  "cozy-permissions": {
+    "ReceiptDetail": {
+      "description": "Visualiser les lignes de votre ticket de caisse."
+    }
   }
-"cozy-displayName":"CARE",
-"cozy-permissions":{
-  "ReceiptDetail"{
-      "description":"Visualiser les lignes de votre ticket de caisse."
-
-
-  }
-
-
-}
 }

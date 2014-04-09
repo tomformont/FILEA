@@ -11,8 +11,8 @@ module.exports = {
 };
 
 
-module.exports = {
+/*module.exports = {
     metadoctype: {
         all: americano.defaultRequests.all
     }
-};
+};*/

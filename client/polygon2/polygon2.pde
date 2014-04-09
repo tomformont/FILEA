@@ -307,7 +307,7 @@ int valeurApport; // minimum -100 // maximum 100
             familyLabelTemp[nbElement]=items[i];
             // j'addition le poids
             poids=poids+ items3[i];
-            println (poids);
+            
             
             // je recupere le poids de l'objet
             poidsDetail[nbElement]= items3[i];
@@ -328,9 +328,8 @@ int valeurApport; // minimum -100 // maximum 100
       
   valeurApport = int (map(poids, 0, apportIdeal[id],0,100 ));
   
-  alpha = int (map ( valeurApport, 0,100,0,255));
+  alpha = int (map ( valeurApport, 0,100,10,230));
   initialOpacity=alpha;
-println (poids+ " "+valeurApport);  
       
       
       /*
@@ -377,16 +376,13 @@ println (poids+ " "+valeurApport);
             familyLabelTemp[nbElement]=items[i];
             // j'addition le poids
             poids=poids+ items3[i];
-            println (poids);
             
             // je recupere le poids de l'objet
             poidsDetail[nbElement]= items3[i];
 
-            println(items2[i]);
 
             // je stocke temporairement la date
             dateTemp[nbElement]=items2[i];
-            println (familyLabelTemp[i]+" "+dateTemp[i]+ " "+i);
 
             // je rajoute 1 a ma variable nbElement 
             nbElement+=1;
@@ -443,16 +439,13 @@ println (poids+ " "+valeurApport);
             familyLabelTemp[nbElement]=items[i];
             // j'addition le poids
             poids=poids+ items3[i];
-            println (poids);
             
             // je recupere le poids de l'objet
             poidsDetail[nbElement]= items3[i];
 
-            println(items2[i]);
 
             // je stocke temporairement la date
             dateTemp[nbElement]=items2[i];
-            println (familyLabelTemp[i]+" "+dateTemp[i]+ " "+i);
 
             // je rajoute 1 a ma variable nbElement 
             nbElement+=1;
@@ -506,16 +499,13 @@ println (poids+ " "+valeurApport);
             familyLabelTemp[nbElement]=items[i];
             // j'addition le poids
             poids=poids+ items3[i];
-            println (poids);
             
             // je recupere le poids de l'objet
             poidsDetail[nbElement]= items3[i];
 
-            println(items2[i]);
 
             // je stocke temporairement la date
             dateTemp[nbElement]=items2[i];
-            println (familyLabelTemp[i]+" "+dateTemp[i]+ " "+i);
 
             // je rajoute 1 a ma variable nbElement 
             nbElement+=1;
@@ -573,16 +563,13 @@ println (poids+ " "+valeurApport);
             familyLabelTemp[nbElement]=items[i];
             // j'addition le poids
             poids=poids+ items3[i];
-            println (poids);
             
             // je recupere le poids de l'objet
             poidsDetail[nbElement]= items3[i];
 
-            println(items2[i]);
 
             // je stocke temporairement la date
             dateTemp[nbElement]=items2[i];
-            println (familyLabelTemp[i]+" "+dateTemp[i]+ " "+i);
 
             // je rajoute 1 a ma variable nbElement 
             nbElement+=1;
@@ -638,16 +625,13 @@ println (poids+ " "+valeurApport);
             familyLabelTemp[nbElement]=items[i];
             // j'addition le poids
             poids=poids+ items3[i];
-            println (poids);
             
             // je recupere le poids de l'objet
             poidsDetail[nbElement]= items3[i];
 
-            println(items2[i]);
 
             // je stocke temporairement la date
             dateTemp[nbElement]=items2[i];
-            println (familyLabelTemp[i]+" "+dateTemp[i]+ " "+i);
 
             // je rajoute 1 a ma variable nbElement 
             nbElement+=1;
@@ -807,7 +791,6 @@ println (poids+ " "+valeurApport);
 
     cibleX=x;
     cibleY=y;
-    println (cibleX + " "+ cibleY);
   }
 
   void easeTarget() {
@@ -947,7 +930,6 @@ mode="detail";
           organe4.changeOpacity=true;
           organe5.changeOpacity=true;
           organe6.changeOpacity=true;
-          println(organe1.valeurApport);
 
           break;
 
