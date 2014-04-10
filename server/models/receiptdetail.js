@@ -143,7 +143,10 @@ ReceiptDetail._ean13CheckSum(this);
 ReceiptDetail.all = function(callback) {
     ReceiptDetail.request(
         "all", 
-        {},
+        { 
+          descending: true, 
+          limit: 30 // à toi de choisir ici le nombre de ligne de tickets qui convient.
+        },
         function(err, instances) {
             callback(null, instances);
         }

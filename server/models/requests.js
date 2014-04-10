@@ -6,7 +6,9 @@ americano = require('americano');
 
 module.exports = {
     receiptdetail: {
-        all: americano.defaultRequests.all
+        all: function(doc) {
+		emit(doc.timestamp, doc);
+	}
     }
 };
 
